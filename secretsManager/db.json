@@ -11,12 +11,6 @@
       "secretName": "email",
       "secretText": "asdfgh123345",
       "allowExport": false
-    },
-    {
-      "id": "89",
-      "secretName": "werer",
-      "secretText": "werewrr",
-      "allowExport": false
     }
   ]
 }

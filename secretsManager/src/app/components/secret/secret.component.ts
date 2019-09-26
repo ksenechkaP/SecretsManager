@@ -18,7 +18,7 @@ export class SecretComponent implements OnInit {
     secretText: null,
     allowExport: null
   };
-  public isCollapsed = false;
+  public isDisabled = true;
 
   constructor(private secretsService: SecretsService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 
@@ -38,9 +38,9 @@ export class SecretComponent implements OnInit {
     }
   }
   onSubmit() {
-    const {secretName, secretText} = this.editForm.value;
+    const {secretName, secretText, allowExport} = this.editForm.value;
     if (this.secret.id) {
-      const secret = new Secret(this.secret.id, secretName, secretText, false);
+      const secret = new Secret(this.secret.id, secretName, secretText, allowExport);
       console.log(secret);
       this.secretsService.updateSecret(secret);
     }
@@ -48,4 +48,12 @@ export class SecretComponent implements OnInit {
   deleteSecret() {
     this.secretsService.deleteSecret(this.secret.id);
   }
+
+  cancelEdit() {
+    this.isDisabled = true;
+  }
+
+  allowEdit(value: boolean) {
+     this.isDisabled = false;
+   }
 }

@@ -1,18 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { SecretsService } from '../../services/secrets.service';
+import { Secret } from '../../models/secret.model';
+
 @Component({
   selector: 'app-secrets',
   templateUrl: './secrets.component.html',
   styleUrls: ['./secrets.component.scss']
 })
 export class SecretsComponent implements OnInit {
-  newSecretForm: FormGroup;
-  submitted = false;
+  private newSecretForm: FormGroup;
+  public submitted = false;
+  public secretsList;
 
-  constructor( private formBuilder: FormBuilder) { }
+  constructor( private formBuilder: FormBuilder, private secretsService: SecretsService) { }
+
+  listSecrets() {
+    this.secretsService.getClients().subscribe(res => {
+      this.secretsList = res;
+    });
+  }
 
   ngOnInit() {
+    this.listSecrets();
     this.newSecretForm = this.formBuilder.group({
            secret_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]],
            secret_text: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(280)]],

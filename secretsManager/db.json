@@ -1,18 +1,21 @@
 {
   "secrets": [{
-      "secret_id": 2,
-      "secret_name": "test",
-      "secret_text": "q1w2e32rr"
+      "secretId": 2,
+      "secretName": "test",
+      "secretText": "q1w2e32rr",
+      "allowExport": false
     },
     {
-      "secret_id": 2,
-      "secret_name": "email",
-      "secret_text": "asdfgh123345"
+      "secretId": 2,
+      "secretName": "email",
+      "secretText": "asdfgh123345",
+      "allowExport": false
     },
     {
-      "secret_id": 2,
-      "secret_name": "bank",
-      "secret_text": "3216549879"
+      "secretId": 2,
+      "secretName": "bank",
+      "secretText": "3216549879",
+      "allowExport": false
     }
   ]
 }

@@ -5,6 +5,8 @@ import { ActivatedRoute} from '@angular/router';
 import { SecretsService } from '../../services/secrets.service';
 import { Secret } from '../../models/secret.model';
 
+import * as CryptoJS from 'crypto-js';
+
 @Component({
   selector: 'app-secret',
   templateUrl: './secret.component.html',
@@ -19,6 +21,7 @@ export class SecretComponent implements OnInit {
     allowExport: null
   };
   public isDisabled = true;
+  public decripted = true;
 
   constructor(private secretsService: SecretsService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 
@@ -33,7 +36,7 @@ export class SecretComponent implements OnInit {
       this.secretsService.getSecretById(this.secret.id).subscribe(res => {
        this.secret = res;
        this.editForm.get('secretName').setValue(this.secret.secretName);
-       this.editForm.get('secretText').setValue(this.secret.secretText);
+       this.editForm.get('secretText').setValue(this.hashPassword(this.secret.secretText));
      });
     }
   }
@@ -53,7 +56,21 @@ export class SecretComponent implements OnInit {
     this.isDisabled = true;
   }
 
-  allowEdit(value: boolean) {
+  allowEdit() {
      this.isDisabled = false;
    }
+
+   hashPassword(password: string) {
+     return '*'.repeat(password.length)
+  }
+
+  decodePassword() {
+    this.decripted = false;
+    this.editForm.get('secretText').setValue(this.secret.secretText);
+  }
+
+  encodePassword() {
+    this.decripted = true;
+    this.editForm.get('secretText').setValue(this.hashPassword(this.secret.secretText));
+  }
 }

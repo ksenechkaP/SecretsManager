@@ -9,12 +9,14 @@ import { SecretComponent } from './components/secret/secret.component';
 import { SecretsComponent } from './components/secrets/secrets.component';
 import { SecretsService } from './services/secrets.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FilterPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SecretComponent,
-    SecretsComponent
+    SecretsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

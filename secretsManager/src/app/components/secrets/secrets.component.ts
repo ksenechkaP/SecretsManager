@@ -17,6 +17,7 @@ export class SecretsComponent implements OnInit {
   public submitted = false;
   public secretsList;
   closeResult: string;
+  searchText;
 
   constructor( private formBuilder: FormBuilder, private secretsService: SecretsService, private modalService: NgbModal) { }
 

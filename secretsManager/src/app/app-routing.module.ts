@@ -5,7 +5,7 @@ import { SecretComponent } from './components/secret/secret.component';
 
 
 const routes: Routes = [
-  { path: 'secret/:secretId', component: SecretComponent },
+  { path: 'secret/:id', component: SecretComponent },
   { path: '', component: SecretsComponent }
 ];
 

@@ -43,7 +43,7 @@ export class SecretsService {
         'Content-Type':  'application/json'
         })
       };
-    return this.httpClient.put<Secret>(this.secretsUrl + '/' + secret.secretId, secret, httpOptions).subscribe(
+    return this.httpClient.put<Secret>(this.secretsUrl + '/' + secret.id, secret, httpOptions).subscribe(
         val => {
             console.log('PUT call successful value returned in body',
                         val);

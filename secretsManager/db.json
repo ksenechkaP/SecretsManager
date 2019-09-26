@@ -1,0 +1,18 @@
+{
+  "secrets": [{
+      "secret_id": 2,
+      "secret_name": "test",
+      "secret_text": "q1w2e32rr"
+    },
+    {
+      "secret_id": 2,
+      "secret_name": "email",
+      "secret_text": "asdfgh123345"
+    },
+    {
+      "secret_id": 2,
+      "secret_name": "bank",
+      "secret_text": "3216549879"
+    }
+  ]
+}

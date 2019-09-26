@@ -50,6 +50,7 @@ export class SecretsService {
         val => {
             console.log('PUT call successful value returned in body',
                         val);
+            alert('The secret was updated');
         },
         response => {
             console.log('PUT call in error', response);

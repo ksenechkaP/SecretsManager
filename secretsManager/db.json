@@ -2,14 +2,14 @@
   "secrets": [
     {
       "id": 2,
-      "secretName": "test",
-      "secretText": "q1w2e32rr",
+      "secretName": "email",
+      "secretText": "asdfgh123345",
       "allowExport": false
     },
     {
-      "id": 2,
-      "secretName": "email",
-      "secretText": "asdfgh123345",
+      "id": "1f3b8f4d-9cd8-47f7-af57-f6cb77d2b5ea",
+      "secretName": "home comp",
+      "secretText": "12343545",
       "allowExport": false
     }
   ]

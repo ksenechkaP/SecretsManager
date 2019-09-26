@@ -13,21 +13,22 @@ export class SecretsService {
 
   }
 
-  getClients() {
+  getSecrets() {
      return this.httpClient.get(this.secretsUrl);
   }
 
-  getClientById(secretId: string): Observable<Secret> {
+  getSecretById(secretId: string): Observable<Secret> {
     return this.httpClient.get<Secret>(this.secretsUrl + '/' + secretId);
   }
 
-  createNewClient(secret: Secret) {
+  createNewSecret(secret: Secret) {
     return this.httpClient.post<Secret>(this.secretsUrl, secret).subscribe(
         val => {
             console.log('POST call successful value returned in body',
                         val);
         },
         response => {
+            console.log(secret);
             console.log('POST call in error', response);
         },
         () => {
@@ -36,7 +37,7 @@ export class SecretsService {
     );
   }
 
-  updateClient(secret: Secret) {
+  updateSecret(secret: Secret) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
@@ -56,7 +57,7 @@ export class SecretsService {
     );
     }
 
-  deleteClient(id) {
+  deleteSecret(id) {
     return this.httpClient.delete<void>(this.secretsUrl + '/' + id).subscribe(
         val => {
             console.log('DELETE call successful value returned in body',

@@ -1,20 +1,27 @@
 {
-  "secrets": [{
-      "secretId": 2,
+  "secrets": [
+    {
+      "id": 2,
       "secretName": "test",
       "secretText": "q1w2e32rr",
       "allowExport": false
     },
     {
-      "secretId": 2,
+      "id": 2,
       "secretName": "email",
       "secretText": "asdfgh123345",
       "allowExport": false
     },
     {
-      "secretId": 2,
+      "id": 3,
       "secretName": "bank",
       "secretText": "3216549879",
+      "allowExport": false
+    },
+    {
+      "id": "51",
+      "secretName": "dsfgs",
+      "secretText": "dhshfh",
       "allowExport": false
     }
   ]

@@ -17,7 +17,7 @@ export class SecretsComponent implements OnInit {
   constructor( private formBuilder: FormBuilder, private secretsService: SecretsService) { }
 
   listSecrets() {
-    this.secretsService.getClients().subscribe(res => {
+    this.secretsService.getSecrets().subscribe(res => {
       this.secretsList = res;
     });
   }
@@ -25,8 +25,8 @@ export class SecretsComponent implements OnInit {
   ngOnInit() {
     this.listSecrets();
     this.newSecretForm = this.formBuilder.group({
-           secret_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]],
-           secret_text: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(280)]],
+           secretName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]],
+           secretText: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(280)]],
            allowExport: [false],
        });
   }
@@ -40,8 +40,11 @@ export class SecretsComponent implements OnInit {
     if (this.newSecretForm.invalid) {
         return;
     }
-    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.newSecretForm.value));
 
+    const {secretName, secretText, allowExport} = this.newSecretForm.value;
+    const id = Math.floor(Math.random() * Math.floor(100));
+    const secret = new Secret(id.toString(), secretName, secretText, allowExport);
+    this.secretsService.createNewSecret(secret);
     }
 
 }

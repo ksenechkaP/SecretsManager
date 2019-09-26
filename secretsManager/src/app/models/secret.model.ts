@@ -1,3 +1,3 @@
 export class Secret {
-  constructor(public secretId: string, public secretName: string, public secretText: string, public allowExport: boolean) {}
+  constructor(public id: string, public secretName: string, public secretText: string, public allowExport: boolean) {}
 }

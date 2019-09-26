@@ -18,6 +18,7 @@ export class SecretComponent implements OnInit {
     secretText: null,
     allowExport: null
   };
+  public isCollapsed = false;
 
   constructor(private secretsService: SecretsService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SecretComponent } from './components/secret/secret.component';
 import { SecretsComponent } from './components/secrets/secrets.component';
 import { SecretsService } from './services/secrets.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SecretsService } from './services/secrets.service';
     HttpModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [SecretsService],
   bootstrap: [AppComponent]

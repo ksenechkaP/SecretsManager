@@ -8,6 +8,7 @@ import { Secret } from '../models/secret.model';
 
 export class SecretsService {
   secretsUrl = 'http://localhost:3000/secrets';
+  defaultUrl = 'http://localhost:4200/';
 
   constructor( private httpClient: HttpClient) {
 
@@ -26,6 +27,8 @@ export class SecretsService {
         val => {
             console.log('POST call successful value returned in body',
                         val);
+            alert('New secret was created');
+            window.location.href = this.defaultUrl;
         },
         response => {
             console.log(secret);
@@ -62,6 +65,8 @@ export class SecretsService {
         val => {
             console.log('DELETE call successful value returned in body',
                         val);
+            alert('This secret was deleted');
+            window.location.href = this.defaultUrl;
         },
         response => {
             console.log('DELETE call in error', response);

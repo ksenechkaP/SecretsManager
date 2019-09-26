@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SecretsService } from '../../services/secrets.service';
 import { Secret } from '../../models/secret.model';
+import * as uuid from 'uuid';
+
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-secrets',
@@ -13,8 +16,9 @@ export class SecretsComponent implements OnInit {
   private newSecretForm: FormGroup;
   public submitted = false;
   public secretsList;
+  closeResult: string;
 
-  constructor( private formBuilder: FormBuilder, private secretsService: SecretsService) { }
+  constructor( private formBuilder: FormBuilder, private secretsService: SecretsService, private modalService: NgbModal) { }
 
   listSecrets() {
     this.secretsService.getSecrets().subscribe(res => {
@@ -34,6 +38,10 @@ export class SecretsComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.newSecretForm.controls; }
 
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
+
    onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
@@ -42,7 +50,8 @@ export class SecretsComponent implements OnInit {
     }
 
     const {secretName, secretText, allowExport} = this.newSecretForm.value;
-    const id = Math.floor(Math.random() * Math.floor(100));
+    const id = uuid.v4();
+    // const id = Math.floor(Math.random() * Math.floor(100));
     const secret = new Secret(id.toString(), secretName, secretText, allowExport);
     this.secretsService.createNewSecret(secret);
     }
